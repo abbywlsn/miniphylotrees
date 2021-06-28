@@ -1,0 +1,65 @@
+---
+title: "PhyloHist"
+author: "Abby Wilson"
+date: "6/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(ggplot2)
+
+Fig1 <- ggplot(data=TenNode, aes(x=V1, y=V2)) + 
+        geom_bar(stat="identity") +
+        xlab("Phylogenetic Diversity") +
+        ylab("Occurances") +
+        theme_classic() 
+Fig1
+```
+
+
+
+
+```{r}
+barplot(height=TenNode$V2, names=TenNode$V1, 
+        main="Phylogenetic Diversity for Trees with 10 Nodes", 
+        xlab="Phylogenetic Diversity", 
+        ylab="Number of Occurances",
+        col="light grey",
+        border="black")
+
+
+```
+
+
+```{r}
+barplot(height=FiftyNode$V2, names=FiftyNode$V1, 
+        main="Phylogenetic Diversity for Trees with 50 Nodes", 
+        xlab="Phylogenetic Diversity", 
+        ylab="Number of Occurances",
+        col="light grey",
+        border="black")
+
+
+```
+
+```{r}
+barplot(height=HundredNode$V2, names=HundredNode$V1, 
+        main="Phylogenetic Diversity for Trees with 100 Nodes", 
+        xlab="Phylogenetic Diversity", 
+        ylab="Number of Occurances",
+        col="light grey",
+        border="black")
+
+
+```
+
+
+
+
+
+
