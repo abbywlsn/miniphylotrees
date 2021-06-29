@@ -2,7 +2,7 @@
 #include <vector>
 #include <memory>
 #include <assert.h>
-#include "/mnt/c/Users/abbys/Empirical/include/emp/Evolve/Systematics.hpp"
+#include "Evolve/Systematics.hpp"
 
 //g++ -std=c++17 -I../../ main.cpp -o main.o && ./main.o
 //g++ -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I/mnt/c/Users/abbys/boost/boost_1_61_0 GenTrees.cpp
