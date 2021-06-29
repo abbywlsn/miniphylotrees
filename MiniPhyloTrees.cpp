@@ -5,7 +5,8 @@
 #include <memory>
 #include <cassert>
 #include <assert.h>
-#include "/mnt/c/Users/abbys/Empirical/include/emp/Evolve/Systematics.hpp"
+//#include "/mnt/c/Users/abbys/Empirical/include/emp/Evolve/Systematics.hpp"
+#include "Evolve/Systematics.hpp"
 
 using namespace std;
 
