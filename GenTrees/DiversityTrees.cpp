@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include "Evolve/Systematics.hpp"
 
+//for i in {i..10}; do make DiversityTrees && ./a.out done
+
 //g++ -std=c++17 -I../../ main.cpp -o main.o && ./main.o
 //for i in {1..5}; do g++ -std=c++17 -I../../ main.cpp -o main.o && ./main.o; done
 //for i in {1..100}; do ./main.o; done
@@ -26,7 +28,7 @@
 
 using namespace std;
 
-int numOrgs = 100;
+int numOrgs = 10;
 int parentNum;
 int numGens = 10;
 double mutRate = 0.05;
