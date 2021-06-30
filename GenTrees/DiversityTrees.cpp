@@ -15,7 +15,7 @@
  * 0 and 1 is less than 0.05. When a mutation occurs, another random number is generated between -3 and 3. Whatever number is chosen
  * is then subtracted from the original genotype value. If the user chooses to use pressure for diversity, they must use the
  * ChooseOrgDiversity() function and the CalcFitness() function. The ChooseOrg() function should be left unused in this scenario.
- *
+ */
 /*This file creates trees with mutations and pressure for diversity (optional) for the systematics normalization project.
  * This program generates a random tree with a depth of
  * 100 generations. This can be changed in the numGens variable. This tree has 10 organisms per generation and uses a clade
@@ -79,13 +79,13 @@ void calcFitness(vector<Organism> &currentGen, vector<double> &fitnessVect, emp:
     vector<int> fitnessCalc;
 
     fitnessCalc.reserve(currentGen.size());
-    for (int i = 0; i < currentGen.size(); i++) {
+    for (int i = 0; i < (int) currentGen.size(); i++) {
         fitnessCalc.push_back(currentGen[i].genotype);
     }
 
     map<int, int> CountMap;
 
-    for (int j = 0; j < fitnessCalc.size(); j++) {
+    for (int j = 0; j < (int) fitnessCalc.size(); j++) {
         if (emp::Has(CountMap, fitnessCalc[j])) {
             CountMap[fitnessCalc[j]]++;
         } else {
@@ -94,7 +94,7 @@ void calcFitness(vector<Organism> &currentGen, vector<double> &fitnessVect, emp:
         }
     }
 
-    for(int k = 0; k < fitnessCalc.size(); k++){
+    for(int k = 0; k < (int) fitnessCalc.size(); k++){
         fitnessVect.push_back(1.0/CountMap[fitnessCalc[k]]);
     }
 }
@@ -112,9 +112,9 @@ int chooseOrgDiversity(vector<double> &fitnessVect, emp::Random &randNum){
 
     //cout << "FITNESS VECTOR VALUES: " << endl;
 
-    for(int pos = 0; pos < fitnessVect.size(); pos++){
-        //cout << fitnessVect[pos] << " " << endl;
-    }
+    // for(int pos = 0; pos < (int) fitnessVect.size(); pos++){
+    //     //cout << fitnessVect[pos] << " " << endl;
+    // }
 
     parentNum = parent_id;
 
@@ -208,7 +208,7 @@ int main() {
             TenGens = TenGens + 10;
         }
 
-        for(int j = 0; j < currentGen.size(); j++){
+        for(int j = 0; j < (int) currentGen.size(); j++){
             sys.RemoveOrg(j);
         }
 
