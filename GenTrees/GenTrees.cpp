@@ -92,8 +92,11 @@ int main() {
 
         if(i == numGens - 1){
             /* uncomment these for different program functionality described in file header. */
-
-            cout << sys.GetPhylogeneticDiversity() << endl;
+            int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
+            cout << "PHYLO DIVERSITY: " << phylogenetic_diversity << endl; 
+            int NumLeaf = sys.GetNumLeafNodes(); 
+            cout << "NUM LEAF: " << NumLeaf << endl; 
+            sys.NumConfigurations(NumLeaf, phylogenetic_diversity);
             //writeToFile("filename.csv", sys.GetPhylogeneticDiversity());
             }
 
@@ -107,7 +110,6 @@ int main() {
     }
 
     int total_orgs = numGens * numOrgs;
-
     cout << "generations: " << numGens << " / total organisms: " << total_orgs << endl;
     };
 
