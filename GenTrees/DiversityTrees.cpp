@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include "Evolve/Systematics.hpp"
 
-//for i in {i..10}; do make DiversityTrees && ./a.out done
+//for i in {1..5}; do make DiversityTrees && ./a.out; done
 
 //g++ -std=c++17 -I../../ main.cpp -o main.o && ./main.o
 //for i in {1..5}; do g++ -std=c++17 -I../../ main.cpp -o main.o && ./main.o; done
@@ -28,7 +28,7 @@
 
 using namespace std;
 
-int numOrgs = 10;
+int numOrgs = 10; 
 int parentNum;
 int numGens = 10;
 double mutRate = 0.05;
@@ -132,7 +132,7 @@ void switchGens(vector<Organism> &currentGen, vector<Organism> &childGen, emp::S
 }
 
 bool writeToFile(string filename, double field_one);
-
+bool writeToFileThree(string filename, int field_one, int field_two, double field_three);
 
 int main() {
     emp::Random randNum;
@@ -197,8 +197,8 @@ int main() {
             int NumLeaf = sys.GetNumLeafNodes(); 
             cout << "NUM LEAF: " << NumLeaf << endl; 
             //sys.NumConfigurations(NumLeaf, phylogenetic_diversity);
-            writeToFile("NumConfigResults.csv", sys.NumConfigurations(NumLeaf, phylogenetic_diversity));
-
+            //writeToFile("NumConfigResults.csv", sys.NumConfigurations(NumLeaf, phylogenetic_diversity));
+            writeToFileThree("NumConfigResultsValues.csv", NumLeaf, phylogenetic_diversity, sys.NumConfigurations(NumLeaf, phylogenetic_diversity)); 
             //TenGens = TenGens + 10;
             //sys.FindPhyloMultipleGens(TenGens);
             //sys.GetPhylogeneticDiversity(TenGens, "TensChooseOrgGenotype.csv");
@@ -225,6 +225,16 @@ bool writeToFile(string filename, double field_one){
     ofstream file;
     file.open(filename, ios_base::app);
     file << field_one << ",";
+    file.close();
+
+    return true;
+}
+
+  bool writeToFileThree(string filename, int field_one, int field_two, double field_three){
+    ofstream file;
+    file.open(filename, std::ios_base::app);
+    //this will be number of nodes, not normalized diversity, and num cconfig result
+    file << field_one << "," << field_two << "," << field_three << endl;
     file.close();
 
     return true;
