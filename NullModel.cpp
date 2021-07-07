@@ -98,7 +98,7 @@ int main(int argc, char * argv[]) {
      for(int gen = 1; gen <= 5000; gen++){ 
          for(int run = 1; run <= 1000; run++){ 
 
-            std::cout << config.POP_SIZE() << std::endl; 
+            //std::cout << config.POP_SIZE() << std::endl; 
             std::function<int(Organism)> taxonFunc = [](Organism org){return org.genotype;};
             emp::Systematics<Organism, int> sys(taxonFunc); //optional 3rd arg
             sys.SetTrackSynchronous(true);
@@ -149,7 +149,7 @@ int main(int argc, char * argv[]) {
             }
 
             int total_orgs = gen * config.POP_SIZE();
-            std::cout << "generations: " << gen << " / total organisms: " << total_orgs << std::endl;
+           // std::cout << "generations: " << gen << " / total organisms: " << total_orgs << std::endl;
 
         }
         writeToFile("NullModelResults_10.csv", 0, true);
