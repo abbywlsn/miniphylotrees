@@ -9,21 +9,25 @@
 #include "config/ArgManager.hpp"
 
 
+//need to go through each generation 1000 times 
+//increment generations by 1 
+//change populaltion to 10, 100, 1000
+
 
 EMP_BUILD_CONFIG(NullModelConfig,
   GROUP(MAIN, "Tree Settings"),
   VALUE(MUTATION_RATE, double, 0.05, "This is my mutation rate."),
-  VALUE(POP_SIZE, int, 100, "This is my population size."),
+  VALUE(POP_SIZE, int, 10, "This is my population size."),
   VALUE(GENERATION_COUNT, int, 10, "This is my number of generations."),
 );
 
 NullModelConfig config; 
 
-double mutRate = config.MUTATION_RATE(); 
-int numOrgs = config.POP_SIZE(); 
-int parentNum; 
-int numGens = config.GENERATION_COUNT(); 
-int TenGens = 10; 
+// double config.MUTATION_RATE() = config.MUTATION_RATE(); 
+// int config.POP_SIZE() = config.POP_SIZE(); 
+ int parentNum; 
+// int gen = gen; 
+// int TenGens = 10; 
 
 class Organism {
 public:
@@ -41,7 +45,7 @@ public:
         double randMutation = RandNum.GetDouble(0, 1);
         assert(randMutation != 0 && randMutation > 0);
 
-        if (randMutation < mutRate) {
+        if (randMutation < config.MUTATION_RATE()) {
             int MutatedGenotype = genotype - RandNum.GetInt(-3, 3);
             genotype = MutatedGenotype;
             //cout << "mutated genotype = " << genotype << endl;
@@ -63,12 +67,18 @@ void switchGens(std::vector<Organism> &currentGen, std::vector<Organism> &childG
     sys.Update();
 }
 
-bool writeToFile(std::string filename, int field_one){
-   std::ofstream file;
-   file.open(filename, std::ios_base::app);
-   file << field_one << ",";
-   file.close();
-
+bool writeToFile(std::string filename, int field_one, bool skip_line){
+    if(skip_line == true){ 
+        std::ofstream file;
+        file.open(filename, std::ios_base::app);
+        file << " " << std::endl;
+        file.close();
+    }else{ 
+        std::ofstream file;
+        file.open(filename, std::ios_base::app);
+        file << field_one << ",";
+        file.close();
+    }
    return true;
 }
 
@@ -82,59 +92,67 @@ int main(int argc, char * argv[]) {
     std::cout << "==============================" << std::endl;
     config.Write(std::cout);
     std::cout << "==============================\n" << std::endl; 
-
+    
     emp::Random randNum;
 
-    std::cout << config.POP_SIZE() << std::endl; 
-    std::function<int(Organism)> taxonFunc = [](Organism org){return org.genotype;};
-    emp::Systematics<Organism, int> sys(taxonFunc); //optional 3rd arg
-    sys.SetTrackSynchronous(true);
+     for(int gen = 1; gen <= 5000; gen++){ 
+         for(int run = 1; run <= 1000; run++){ 
 
-    //current gen (vector)
-    std::vector<Organism> currentGen; //begins with currentGen
-    //child gen (vector)
-    std::vector<Organism> childGen;
+            std::cout << config.POP_SIZE() << std::endl; 
+            std::function<int(Organism)> taxonFunc = [](Organism org){return org.genotype;};
+            emp::Systematics<Organism, int> sys(taxonFunc); //optional 3rd arg
+            sys.SetTrackSynchronous(true);
 
-    for (int i = 0; i < numOrgs; i++) {
-        currentGen.emplace_back(); //currentGen is filled with 10 organism
-        sys.AddOrg(currentGen[i], i); //parent is null (removed brackets)
+            //current gen (vector)
+            std::vector<Organism> currentGen; //begins with currentGen
+            //child gen (vector)
+            std::vector<Organism> childGen;
+
+            for (int i = 0; i < config.POP_SIZE(); i++) {
+                currentGen.emplace_back(); //currentGen is filled with 10 organism
+                sys.AddOrg(currentGen[i], i); //parent is null (removed brackets)
+            }
+
+        //    for(int i = 0; i < currentGen.size(); i++){
+        //        cout << currentGen[i] . printVect() << " " << endl;
+        //    }
+
+            for (int i = 0; i < gen; i++) {
+                for(int r = 0; r < config.POP_SIZE(); r++){
+
+                    chooseOrg(currentGen, randNum);
+                    sys.SetNextParent(parentNum);
+                    //currentGen[parentNum].reproduce(childGen, sys); //fills childGen with 10 Organisms
+
+                    childGen.emplace_back(currentGen[parentNum].genotype); //fills childGen vector with Organisms
+                    childGen[r].MutateGenotype(randNum);
+
+                    emp::WorldPosition pos(r, 1);
+                    sys.AddOrg(childGen[r], pos); //removed brackets childGen[i], {i, 0}
+                }
+                //sys.PrintStatus();
+
+                if(i == gen - 1){
+                    int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
+                    writeToFile("NullModelResults_10.csv", phylogenetic_diversity, false);
+                    //so we want to record 10, 100, and 1000 organisms 
+                    //we want to have 0 through 5000 generations
+
+                }
+
+                for(int j = 0; j < (int) currentGen.size(); j++){
+                    sys.RemoveOrg(j);
+                }
+
+
+                switchGens(currentGen,childGen, sys); //puts contents of child vector into current vector and deletes content of child vector
+            }
+
+            int total_orgs = gen * config.POP_SIZE();
+            std::cout << "generations: " << gen << " / total organisms: " << total_orgs << std::endl;
+
+        }
+        writeToFile("NullModelResults_10.csv", 0, true);
     }
-
-//    for(int i = 0; i < currentGen.size(); i++){
-//        cout << currentGen[i] . printVect() << " " << endl;
-//    }
-
-    for (int i = 0; i < numGens; i++) {
-        for(int r = 0; r < numOrgs; r++){
-
-            chooseOrg(currentGen, randNum);
-            sys.SetNextParent(parentNum);
-            //currentGen[parentNum].reproduce(childGen, sys); //fills childGen with 10 Organisms
-
-            childGen.emplace_back(currentGen[parentNum].genotype); //fills childGen vector with Organisms
-            childGen[r].MutateGenotype(randNum);
-
-            emp::WorldPosition pos(r, 1);
-            sys.AddOrg(childGen[r], pos); //removed brackets childGen[i], {i, 0}
-        }
-        //sys.PrintStatus();
-
-        if(i == numGens - 1){
-            int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
-            writeToFile("NullModelResults.csv", phylogenetic_diversity);
-            //so we want to record 10, 100, and 1000 organisms 
-            //we want to have 0 through 5000 generations
-
-        }
-
-        for(int j = 0; j < (int) currentGen.size(); j++){
-            sys.RemoveOrg(j);
-        }
-
-
-        switchGens(currentGen,childGen, sys); //puts contents of child vector into current vector and deletes content of child vector
-    }
-
-    int total_orgs = numGens * numOrgs;
-    std::cout << "generations: " << numGens << " / total organisms: " << total_orgs << std::endl;
+    
 };
