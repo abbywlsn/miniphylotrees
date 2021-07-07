@@ -10,11 +10,11 @@
 
 using namespace std;
 
-int numOrgs = 10;
+int numOrgs = 600;
 int parentNum;
-int numGens = 10000;
+int numGens = 10;
 double mutRate = 0.05;
-int TenGens = 10000; //TenGens is a variable that is incremented by 10 after each round in order to check the correct number of generations during normalization 
+int TenGens = 10; //TenGens is a variable that is incremented by 10 after each round in order to check the correct number of generations during normalization 
 
 
 //assert that diversity is the same every time (check)
@@ -123,6 +123,8 @@ void switchGens(vector<Organism> &currentGen, vector<Organism> &childGen, emp::S
 }
 
 //bool writeToFile(string filename, int field_one);
+bool writeToFileThree(string filename, int field_one, int field_two, double field_three);
+
 
 
 int main() {
@@ -155,7 +157,7 @@ int main() {
 //    }
 
     for (int i = 0; i < numGens; i++) {
-        cout << "generation: " << i << endl;
+        //cout << "generation: " << i << endl;
         //assert(currentGen.size() == 10);
 
         calcFitness(currentGen, fitnessVect, randNum);
@@ -177,19 +179,24 @@ int main() {
             //cout << "size of child population: " << size(childGen) << endl;
         }
         //sys.PrintStatus();
-        cout << "phylogenetic diversity: " << sys.GetPhylogeneticDiversity() << endl;
+        //cout << "phylogenetic diversity: " << sys.GetPhylogeneticDiversity() << endl;
 
         if(i == TenGens - 1){
             //sys.FindPhyloData();
-            cout << "Ten Gens = " << TenGens << endl;
+            //cout << "Ten Gens = " << TenGens << endl;
             //sys.FindPhyloMultipleGens(TenGens);
             //sys.GetPhylogeneticDiversity(TenGens, "/mnt/c/Users/abbys/miniphylotrees/GenTrees/TensChooseOrgGenotype.csv");
-            int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
-            cout << "PHYLO DIVERSITY: " << phylogenetic_diversity << endl; 
-            int NumLeaf = sys.GetNumLeafNodes(); 
-            cout << "NUM LEAF: " << NumLeaf << endl; 
-            sys.NumConfigurations(NumLeaf, phylogenetic_diversity);
-            //writeToFile("ChooseOrgDiversityGenotype1000.csv", sys.GetPhylogeneticDiversity())
+            int phylogenetic_diversity = sys.GetPhylogeneticDiversity(true); 
+            //cout << "PHYLO DIVERSITY: " << phylogenetic_diversity << endl; 
+            //int NumLeaf = sys.GetNumLeafNodes(); 
+            //cout << "NUM LEAF: " << NumLeaf << endl; 
+            //cout << sys.NumConfigurations(NumLeaf, phylogenetic_diversity) << endl;
+            //writeToFileThree("MiniPhyloTreesResults.csv", NumLeaf, phylogenetic_diversity, sys.NumConfigurations(NumLeaf, phylogenetic_diversity)); 
+            writeToFile("ChooseOrgDiversityGenotype1000.csv", sys.GetPhylogeneticDiversity());
+            //so we want to record 10, 100, and 1000 organisms 
+            //we want to have 0 through 5000 generations
+
+
             //TenGens = TenGens + 10;
         }
 
@@ -214,4 +221,14 @@ bool writeToFile(string filename, int field_one){
    file.close();
 
    return true;
+}
+
+  bool writeToFileThree(string filename, int field_one, int field_two, double field_three){
+    ofstream file;
+    file.open(filename, std::ios_base::app);
+    //this will be number of nodes, not normalized diversity, and num cconfig result
+    file << field_one << "," << field_two << "," << field_three << endl;
+    file.close();
+
+    return true;
 }

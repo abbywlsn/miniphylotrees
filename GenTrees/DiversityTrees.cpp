@@ -28,7 +28,7 @@
 
 using namespace std;
 
-int numOrgs = 10; 
+int numOrgs = 1000; 
 int parentNum;
 int numGens = 10;
 double mutRate = 0.05;
@@ -196,9 +196,9 @@ int main() {
             cout << "PHYLO DIVERSITY: " << phylogenetic_diversity << endl; 
             int NumLeaf = sys.GetNumLeafNodes(); 
             cout << "NUM LEAF: " << NumLeaf << endl; 
-            //sys.NumConfigurations(NumLeaf, phylogenetic_diversity);
+            sys.NumConfigurations(NumLeaf, phylogenetic_diversity);
             //writeToFile("NumConfigResults.csv", sys.NumConfigurations(NumLeaf, phylogenetic_diversity));
-            writeToFileThree("NumConfigResultsValues.csv", NumLeaf, phylogenetic_diversity, sys.NumConfigurations(NumLeaf, phylogenetic_diversity)); 
+            //writeToFileThree("NumConfigResultsValues.csv", NumLeaf, phylogenetic_diversity, sys.NumConfigurations(NumLeaf, phylogenetic_diversity)); 
             //TenGens = TenGens + 10;
             //sys.FindPhyloMultipleGens(TenGens);
             //sys.GetPhylogeneticDiversity(TenGens, "TensChooseOrgGenotype.csv");
