@@ -3,7 +3,7 @@
 #include <memory>
 #include <cassert>
 #include <assert.h>
-#include "Evo lve/Systematics.hpp"
+#include "Evolve/Systematics.hpp"
 #include "config/config.hpp"
 #include "config/command_line.hpp"
 #include "config/ArgManager.hpp"
