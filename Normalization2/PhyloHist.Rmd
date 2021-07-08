@@ -63,3 +63,59 @@ barplot(height=HundredNode$V2, names=HundredNode$V1,
 
 
 
+
+
+
+
+
+
+
+
+
+
+```{r}
+barplot(height=SpecificHist$V2, names=SpecificHist$V1, 
+        main="133 Leaf Nodes, PD = 197", 
+        xlab="Phylogenetic Diversity", 
+        ylab="Number of Occurances",
+        col="light grey",
+        border="black")
+
+
+```
+
+
+```{r}
+barplot(height=SpecificHist148$V2, names=SpecificHist148$V1, 
+        main="148 Leaf Nodes, PD = 218", 
+        xlab="Phylogenetic Diversity", 
+        ylab="Number of Occurances",
+        col="light grey",
+        border="black")
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

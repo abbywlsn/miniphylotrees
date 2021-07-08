@@ -3,7 +3,7 @@
 #include <memory>
 #include <cassert>
 #include <assert.h>
-#include "Evolve/Systematics.hpp"
+#include "Evo lve/Systematics.hpp"
 #include "config/config.hpp"
 #include "config/command_line.hpp"
 #include "config/ArgManager.hpp"
@@ -19,6 +19,7 @@ EMP_BUILD_CONFIG(NullModelConfig,
   VALUE(MUTATION_RATE, double, 0.05, "This is my mutation rate."),
   VALUE(POP_SIZE, int, 10, "This is my population size."),
   VALUE(GENERATION_COUNT, int, 10, "This is my number of generations."),
+  VALUE(RANDOM_SEED, int, -1, "Seed for random number generator"),
 );
 
 NullModelConfig config; 
@@ -93,7 +94,7 @@ int main(int argc, char * argv[]) {
     config.Write(std::cout);
     std::cout << "==============================\n" << std::endl; 
     
-    emp::Random randNum;
+    emp::Random randNum(config.RANDOM_SEED());
 
      for(int gen = 1; gen <= 5000; gen++){ 
          for(int run = 1; run <= 1000; run++){ 
@@ -137,7 +138,6 @@ int main(int argc, char * argv[]) {
                     writeToFile("NullModelResults_10.csv", phylogenetic_diversity, false);
                     //so we want to record 10, 100, and 1000 organisms 
                     //we want to have 0 through 5000 generations
-
                 }
 
                 for(int j = 0; j < (int) currentGen.size(); j++){
