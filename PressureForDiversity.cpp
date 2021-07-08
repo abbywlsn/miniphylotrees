@@ -189,7 +189,7 @@ int main(int argc, char * argv[]) {
                 
                 if(i == gen - 1){
                     //sys.FindPhyloData();
-                    cout << "Gen = " << gen << endl;
+                    //cout << "Gen = " << gen << endl;
                     int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
                     writeToFile("PressureForDiversityResults_10.csv", phylogenetic_diversity, false);
                     //TenGens = TenGens + 10;
@@ -203,7 +203,7 @@ int main(int argc, char * argv[]) {
 
             int total_orgs = gen * config.POP_SIZE();
 
-            cout << "generations: " << gen << " / total organisms: " << total_orgs << endl;
+            //cout << "generations: " << gen << " / total organisms: " << total_orgs << endl;
                     
         }
          writeToFile("PressureForDiversityResults_10.csv", 0, true);
