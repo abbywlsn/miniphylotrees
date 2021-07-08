@@ -35,7 +35,7 @@ module load GNU/8.2.0-2.31.1
 ## We're running this on scratch because that's what ICER prefers
 ## Remember to copy your results to your home directory once they're
 ## done so that they don't get deleted
-cd /mnt/scratch/f0102665/miniphylotrees/Normalization_Null_Model_10/data
+cd /mnt/scratch/f0102665/miniphylotrees/data
 
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
