@@ -5,6 +5,8 @@
 
 ## Make sure to replace dolsonem with your HPCC username
 
+module load GNU/8.2.0-2.31.1
+
 ## Email settings
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=f0102665@msu.edu
@@ -19,6 +21,7 @@
 
 ## Memory requirement in megabytes. You might need to make this bigger.
 #SBATCH --mem-per-cpu=4gb                                              
+
 
 ## Launch an array of jobs. This is convenient for running replicates
 ## that differ only by their random seed. One easy option is to use the array
