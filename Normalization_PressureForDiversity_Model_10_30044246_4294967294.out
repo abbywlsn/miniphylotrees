@@ -1,8 +1,0 @@
-/var/lib/slurmd/job30044246/slurm_script: line 35: cd: /mnt/scratch/f0102665/miniphylotrees/PressureForDiversity_10/data: No such file or directory
-Unknown args: -RANDOM_SEED 10
--GENERATION_COUNT This is my number of generations. (type=int; default=10)
--MUTATION_RATE    This is my mutation rate. (type=double; default=0.05)
--POP_SIZE         This is my population size. (type=int; default=10)
---help            Print help information.
---gen             Generate configuration file.
---make-const      Generate const version of macros file.

@@ -1,2 +1,0 @@
-/var/lib/slurmd/job30039742/slurm_script: line 35: cd: /mnt/scratch/f0102665/miniphylotrees/Normalization_Null_Model_10/data: No such file or directory
-/var/lib/slurmd/job30039742/slurm_script: line 59: ./NullModelExec: Permission denied
