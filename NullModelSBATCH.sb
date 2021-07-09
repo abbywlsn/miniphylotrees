@@ -35,13 +35,13 @@ module load GNU/8.2.0-2.31.1
 ## We're running this on scratch because that's what ICER prefers
 ## Remember to copy your results to your home directory once they're
 ## done so that they don't get deleted
-cd /mnt/scratch/f0102665/miniphylotrees/data
+cd /mnt/scratch/f0102665/miniphylotrees/NullModel_Data
 
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
 ## that's harmless)
-mkdir Normalization_Null_Model_10
-cd Normalization_Null_Model_10
+mkdir NullModel_10
+cd NullModel_10
 
 ## Make a directory for this random seed
 ## mkdir ${SLURM_ARRAY_TASK_ID}
