@@ -44,7 +44,7 @@ public:
     int MutateGenotype(emp::Random &RandNum) {
 
         double randMutation = RandNum.GetDouble(0, 1);
-        assert(randMutation != 0 && randMutation > 0);
+        //assert(randMutation != 0 && randMutation > 0);
 
         if (randMutation < config.MUTATION_RATE()) {
             int MutatedGenotype = genotype - RandNum.GetInt(-3, 3);

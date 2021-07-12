@@ -1,0 +1,3 @@
+mkdir: cannot create directory 'NullModel_10': File exists
+NullModelExec: NullModel.cpp:47: int Organism::MutateGenotype(emp::Random&): Assertion `randMutation != 0 && randMutation > 0' failed.
+/var/lib/slurmd/job30100609/slurm_script: line 62:  7139 Aborted                 ./NullModelExec -RANDOM_SEED 10 > run.log
