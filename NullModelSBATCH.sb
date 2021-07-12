@@ -16,7 +16,7 @@
 
 ## Time requirement in hours and minutes. You might need to make this
 ## longer, but try to keep it under 4 hours if possible
-#SBATCH --time=0-4:00:00
+#SBATCH --time=0-6:00:00
 
 ## Memory requirement in megabytes. You might need to make this bigger.
 #SBATCH --mem-per-cpu=4gb                                              
