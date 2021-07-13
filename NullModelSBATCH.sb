@@ -40,8 +40,8 @@ cd /mnt/scratch/f0102665/miniphylotrees/NullModel_Data
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
 ## that's harmless)
-mkdir NullModel_10
-cd NullModel_10
+mkdir NullModel_100
+cd NullModel_100
 
 ## Make a directory for this random seed
 ## mkdir ${SLURM_ARRAY_TASK_ID}
@@ -59,6 +59,6 @@ cp /mnt/scratch/f0102665/miniphylotrees/NullModelExec .
 
 ## Actually run your program. Set the random seed to the array id
 ## and make sure to set whatever other command-line arguments are necessary
-./NullModelExec -RANDOM_SEED 10 > run.log
+./NullModelExec -RANDOM_SEED 10 - POP_SIZE 100> run.log
 
 ## If you need to do anything after your run, it can go here.
