@@ -96,7 +96,7 @@ int main(int argc, char * argv[]) {
     
     emp::Random randNum(config.RANDOM_SEED());
 
-     for(int gen = 1; gen <= 5000; gen++){ 
+     for(int gen = 1; gen <= 1000; gen++){ 
          for(int run = 1; run <= 1000; run++){ 
 
             //std::cout << config.POP_SIZE() << std::endl; 
