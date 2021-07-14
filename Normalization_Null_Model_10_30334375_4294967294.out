@@ -1,0 +1,2 @@
+mkdir: cannot create directory 'NullModel_100': File exists
+slurmstepd: error: *** JOB 30334375 ON css-045 CANCELLED AT 2021-07-13T19:31:40 ***

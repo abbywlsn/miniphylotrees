@@ -12,7 +12,7 @@
 
 ## Job name settings
 #SBATCH --job-name=Normalization_Null_Model_10
-#SBATCH -o Normalization_Null_Model_10_%A_%a.out
+#SBATCH -o Normalization_Null_Model_1000_%A_%a.out
 
 ## Time requirement in hours and minutes. You might need to make this
 ## longer, but try to keep it under 4 hours if possible
@@ -40,8 +40,8 @@ cd /mnt/scratch/f0102665/miniphylotrees/NullModel_Data
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
 ## that's harmless)
-mkdir NullModel_100
-cd NullModel_100
+mkdir NullModel_1000
+cd NullModel_1000
 
 ## Make a directory for this random seed
 ## mkdir ${SLURM_ARRAY_TASK_ID}
@@ -59,6 +59,6 @@ cp /mnt/scratch/f0102665/miniphylotrees/NullModelExec .
 
 ## Actually run your program. Set the random seed to the array id
 ## and make sure to set whatever other command-line arguments are necessary
-./NullModelExec -RANDOM_SEED 10 - POP_SIZE 100> run.log
+./NullModelExec -RANDOM_SEED 10 > run.log
 
 ## If you need to do anything after your run, it can go here.
