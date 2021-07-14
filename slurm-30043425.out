@@ -1,2 +1,0 @@
-mkdir: cannot create directory 'Normalization_Null_Model_10': File exists
-slurmstepd: error: *** JOB 30043425 ON css-036 CANCELLED AT 2021-07-08T15:24:23 DUE TO TIME LIMIT ***

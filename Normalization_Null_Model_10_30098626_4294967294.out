@@ -1,2 +1,0 @@
-NullModelExec: NullModel.cpp:47: int Organism::MutateGenotype(emp::Random&): Assertion `randMutation != 0 && randMutation > 0' failed.
-/var/lib/slurmd/job30098626/slurm_script: line 62:  7674 Aborted                 (core dumped) ./NullModelExec -RANDOM_SEED 10 > run.log

@@ -1,2 +1,0 @@
-mkdir: cannot create directory 'NullModel_10': File exists
-slurmstepd: error: *** JOB 30215734 ON css-050 CANCELLED AT 2021-07-12T07:15:49 DUE TO TIME LIMIT ***
