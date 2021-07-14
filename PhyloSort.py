@@ -2,7 +2,7 @@ from sklearn import preprocessing
 import numpy as np
 import csv
 
-with open('NullModel_Data/NullModel_10/NullModelResults_10.csv', 'r', newline='') as csv_file:
+with open('NullModel_Data/NullModel_10/10_NoComma.csv', 'r', newline='') as csv_file:
     reader = csv.reader(line.replace('  ', ',') for line in csv_file)
     my_list = list(reader)
     x = my_list
@@ -20,7 +20,6 @@ with open('NullModel_Data/NullModel_10/NullModelResults_10.csv', 'r', newline=''
 
     print("Normalized Data = ", normalized)
 
-    with open('NullModel_Data/NullModel_10/NullModelSorted.csv',
+    with open('NullModel_Data/NullModel_10/NullModelSorted_10.csv',
               'w') as tree_percentiles:
-
             tree_percentiles.write(normalized + '\n')

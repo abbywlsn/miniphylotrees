@@ -19,7 +19,7 @@ EMP_BUILD_CONFIG(NullModelConfig,
   VALUE(MUTATION_RATE, double, 0.05, "This is my mutation rate."),
   VALUE(POP_SIZE, int, 10, "This is my population size."),
   VALUE(GENERATION_COUNT, int, 10, "This is my number of generations."),
-  VALUE(RANDOM_SEED, int, -1, "Seed for random number generator"),
+  VALUE(RANDOM_SEED, int, 10, "Seed for random number generator"),
 );
 
 NullModelConfig config; 
@@ -57,7 +57,6 @@ public:
 };
 
 int chooseOrg(std::vector<Organism> &currentGen, emp::Random &randNum){
-
     parentNum = randNum.GetInt((int) currentGen.size());  //chooses random spot in array for parent
     return parentNum;
 }
@@ -96,7 +95,7 @@ int main(int argc, char * argv[]) {
     
     emp::Random randNum(config.RANDOM_SEED());
 
-     for(int gen = 1; gen <= 1000; gen++){ 
+     for(int gen = 0; gen <= 1000; gen++){ 
          for(int run = 1; run <= 1000; run++){ 
 
             //std::cout << config.POP_SIZE() << std::endl; 
@@ -135,7 +134,7 @@ int main(int argc, char * argv[]) {
 
                 if(i == gen - 1){
                     int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
-                    writeToFile("NullModelResults_1000.csv", phylogenetic_diversity, false);
+                    writeToFile("NullModelResults_10.csv", phylogenetic_diversity, false);
                     //so we want to record 10, 100, and 1000 organisms 
                     //we want to have 0 through 5000 generations
                 }
@@ -146,13 +145,13 @@ int main(int argc, char * argv[]) {
 
 
                 switchGens(currentGen,childGen, sys); //puts contents of child vector into current vector and deletes content of child vector
-            }
+            } 
 
-            int total_orgs = gen * config.POP_SIZE();
+            //int total_orgs = gen * config.POP_SIZE();
            // std::cout << "generations: " << gen << " / total organisms: " << total_orgs << std::endl;
 
         }
-        writeToFile("NullModelResults_1000.csv", 0, true);
+        writeToFile("NullModelResults_10.csv", 0, true);
     }
     
 };
