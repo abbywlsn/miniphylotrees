@@ -40,8 +40,8 @@ cd /mnt/scratch/f0102665/miniphylotrees/NullModel_Data
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
 ## that's harmless)
-mkdir NullModel_10_2
-cd NullModel_10_2
+mkdir NullModel_Again_1000
+cd NullModel_Again_1000
 
 ## Make a directory for this random seed
 ## mkdir ${SLURM_ARRAY_TASK_ID}
