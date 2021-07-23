@@ -17,7 +17,7 @@
 EMP_BUILD_CONFIG(NullModelConfig,
   GROUP(MAIN, "Tree Settings"),
   VALUE(MUTATION_RATE, double, 0.05, "This is my mutation rate."),
-  VALUE(POP_SIZE, int, 10, "This is my population size."),
+  VALUE(POP_SIZE, int, 1000, "This is my population size."),
   VALUE(GENERATION_COUNT, int, 10, "This is my number of generations."),
   VALUE(RANDOM_SEED, int, 10, "Seed for random number generator"),
 );
@@ -134,7 +134,7 @@ int main(int argc, char * argv[]) {
 
                 if(i == gen - 1){
                     int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
-                    writeToFile("NullModelResults_10.csv", phylogenetic_diversity, false);
+                    writeToFile("NullModelResults_1000.csv", phylogenetic_diversity, false);
                     //so we want to record 10, 100, and 1000 organisms 
                     //we want to have 0 through 5000 generations
                 }
@@ -151,7 +151,7 @@ int main(int argc, char * argv[]) {
            // std::cout << "generations: " << gen << " / total organisms: " << total_orgs << std::endl;
 
         }
-        writeToFile("NullModelResults_10.csv", 0, true);
+        writeToFile("NullModelResults_1000.csv", 0, true);
     }
     
 };
