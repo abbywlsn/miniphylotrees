@@ -26,10 +26,10 @@ Fig1
 
 ```{r}
 barplot(height=TenNode$V2, names=TenNode$V1, 
-        main="Phylogenetic Diversity for Trees with 10 Nodes", 
+        main="Phylogenetic Diversity for Trees with 10 Leaf Nodes", 
         xlab="Phylogenetic Diversity", 
         ylab="Number of Occurances",
-        col="light grey",
+        col="light blue",
         border="black")
 
 
@@ -38,10 +38,10 @@ barplot(height=TenNode$V2, names=TenNode$V1,
 
 ```{r}
 barplot(height=FiftyNode$V2, names=FiftyNode$V1, 
-        main="Phylogenetic Diversity for Trees with 50 Nodes", 
+        main="Phylogenetic Diversity for Trees with 50 Leaf Nodes", 
         xlab="Phylogenetic Diversity", 
         ylab="Number of Occurances",
-        col="light grey",
+        col="light blue",
         border="black")
 
 
@@ -49,10 +49,10 @@ barplot(height=FiftyNode$V2, names=FiftyNode$V1,
 
 ```{r}
 barplot(height=HundredNode$V2, names=HundredNode$V1, 
-        main="Phylogenetic Diversity for Trees with 100 Nodes", 
+        main="Phylogenetic Diversity for Trees with 100 Leaf Nodes", 
         xlab="Phylogenetic Diversity", 
         ylab="Number of Occurances",
-        col="light grey",
+        col="light blue",
         border="black")
 
 
@@ -90,7 +90,7 @@ barplot(height=SpecificHist148$V2, names=SpecificHist148$V1,
         main="148 Leaf Nodes, PD = 218", 
         xlab="Phylogenetic Diversity", 
         ylab="Number of Occurances",
-        col="light grey",
+        col="light blue",
         border="black")
 
 

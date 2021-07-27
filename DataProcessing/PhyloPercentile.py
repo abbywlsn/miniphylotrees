@@ -11,7 +11,7 @@ import pandas as pd
 #         tree_percentiles.write(str(i) + "," + " " + str(np.percentile(treedata_array, i)) + '\n')
 
 data_array = []
-df = pd.read_csv('NullModel_Data/NullModel_1000/1000_NoComma.csv', header=None)
+df = pd.read_csv('../NullModel/NullModel_Data/NullModel_100/100_NoComma.csv', header=None)
 df = df.T
 newdf = pd.DataFrame(np.sort(df.values, axis=0), index=df.index, columns=df.columns)
 df = newdf.T
@@ -20,5 +20,5 @@ dfeveryten = df[df.columns[::10]]
 
 print(dfeveryten)
 
-dfeveryten.to_csv('NullModel_Data/NullModel_1000/NullModelPercentiles_1000.csv', header=False,
+dfeveryten.to_csv('../NullModel/NullModel_Data/NullModel_100/Percentile_100.csv', header=False,
           index=False) 

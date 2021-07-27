@@ -1,0 +1,2 @@
+NormalizationNullModel: 
+	g++ -std=c++17 -o NormalizationNullModelExec -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I/mnt/c/Users/abbys/boost/boost_1_61_0 -I/mnt/c/Users/abbys/Empirical/include/emp/ NormalizationNullModel.cpp
