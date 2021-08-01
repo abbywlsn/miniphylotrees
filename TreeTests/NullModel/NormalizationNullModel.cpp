@@ -17,7 +17,7 @@
 EMP_BUILD_CONFIG(NullModelConfig,
   GROUP(MAIN, "Tree Settings"),
   VALUE(MUTATION_RATE, double, 0.05, "This is my mutation rate."),
-  VALUE(POP_SIZE, int, 10, "This is my population size."),
+  VALUE(POP_SIZE, int, 1000, "This is my population size."),
   VALUE(GENERATION_COUNT, int, 1000, "This is my number of generations."),
   VALUE(RANDOM_SEED, int, 1, "Seed for random number generator"),
 );
@@ -28,8 +28,8 @@ NullModelConfig config;
 // double config.MUTATION_RATE() = config.MUTATION_RATE(); 
 // int config.POP_SIZE() = config.POP_SIZE(); 
  int parentNum; 
- std::string file_name = "NormalizationResults_10_TEST2.csv"; 
- std::string normalization_file_name = "../../NullModel/NullModel_Data/NullModel_10/Percentile_10.csv"; 
+ std::string file_name = "NM_norm_1000.csv"; 
+ std::string normalization_file_name = "../../NullModel/NullModel_Data/NullModel_1000/Percentile_1000.csv"; 
 // int gen = gen; 
 // int TenGens = 10; 
 
@@ -140,6 +140,7 @@ int main(int argc, char * argv[]) {
                     int phylogenetic_diversity = sys.GetPhylogeneticDiversity(); 
                     //std::cout << phylogenetic_diversity << std::endl; 
                     int percentile_val = sys.GetPhylogeneticDiversity(false, gen, normalization_file_name);
+                    //std::cout << "gen: " << gen << "   PD: " << phylogenetic_diversity << "   Percent: " << percentile_val << std::endl; 
                     writeToFile(file_name, percentile_val, false);
                     //so we want to record 10, 100, and 1000 organisms 
                     //we want to have 0 through 5000 generations

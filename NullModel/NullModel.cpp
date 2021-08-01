@@ -110,7 +110,7 @@ int main(int argc, char * argv[]) {
 
             for (int i = 0; i < config.POP_SIZE(); i++) {
                 currentGen.emplace_back(); //currentGen is filled with 10 organism
-                sys.AddOrg(currentGen[i], i); //parent is null (removed brackets)
+                sys.AddOrg(currentGen[i], i); //parent is null
             }
 
         //    for(int i = 0; i < currentGen.size(); i++){
